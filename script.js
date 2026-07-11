@@ -1,13 +1,18 @@
-// ===== VPS Status Dashboard =====
+// Infrastructure Status Dashboard
 
-// Current UTC time
-function updateTime() {
-    const time = document.getElementById("current-time");
-    if (!time) return;
+// ---------- Fade In ----------
+window.addEventListener("load", () => {
+    document.body.style.opacity = "1";
+});
+
+// ---------- UTC Clock ----------
+function updateClock() {
+    const clock = document.getElementById("current-time");
+    if (!clock) return;
 
     const now = new Date();
 
-    time.textContent = now.toLocaleString("en-US", {
+    clock.textContent = now.toLocaleString("en-US", {
         weekday: "short",
         month: "short",
         day: "numeric",
@@ -18,50 +23,64 @@ function updateTime() {
     }) + " UTC";
 }
 
-setInterval(updateTime, 1000);
-updateTime();
+updateClock();
+setInterval(updateClock, 1000);
 
-// Fade-in animation
-window.addEventListener("load", () => {
-    document.body.classList.add("loaded");
-});
-
-// Status pulse animation
-document.querySelectorAll(".status-dot").forEach(dot => {
-    setInterval(() => {
-        dot.animate(
-            [
-                { transform: "scale(1)" },
-                { transform: "scale(1.35)" },
-                { transform: "scale(1)" }
-            ],
-            {
-                duration: 1800,
-                easing: "ease-in-out"
-            }
-        );
-    }, 2000);
-});
-
-// Mouse glow effect
-const glow = document.createElement("div");
-glow.className = "cursor-glow";
-document.body.appendChild(glow);
-
-document.addEventListener("mousemove", e => {
-    glow.style.left = `${e.clientX}px`;
-    glow.style.top = `${e.clientY}px`;
-});
-
-// Card hover effect
+// ---------- Card Light Effect ----------
 document.querySelectorAll(".card").forEach(card => {
+
     card.addEventListener("mousemove", e => {
+
         const rect = card.getBoundingClientRect();
 
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
 
-        card.style.setProperty("--x", `${x}px`);
-        card.style.setProperty("--y", `${y}px`);
+        card.style.setProperty("--x", x + "px");
+        card.style.setProperty("--y", y + "px");
+
     });
+
+});
+
+// ---------- Status Pulse ----------
+setInterval(() => {
+
+    document.querySelectorAll(".status-dot").forEach(dot => {
+
+        dot.animate([
+            { transform: "scale(1)" },
+            { transform: "scale(1.4)" },
+            { transform: "scale(1)" }
+        ], {
+            duration: 1800,
+            easing: "ease-in-out"
+        });
+
+    });
+
+}, 2000);
+
+// ---------- Smooth Scroll ----------
+document.querySelectorAll("a").forEach(link => {
+
+    link.addEventListener("click", e => {
+
+        const href = link.getAttribute("href");
+
+        if (!href || href === "#") return;
+
+        if (href.startsWith("#")) {
+
+            e.preventDefault();
+
+            document.querySelector(href)
+                ?.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
+
+    });
+
 });
