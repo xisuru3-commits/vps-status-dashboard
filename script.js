@@ -1,27 +1,67 @@
+// ===== VPS Status Dashboard =====
+
+// Current UTC time
 function updateTime() {
-    const time = document.querySelector(".time");
+    const time = document.getElementById("current-time");
     if (!time) return;
 
     const now = new Date();
 
-    time.textContent =
-        "Updated " +
-        now.toLocaleTimeString([], {
-            hour: "2-digit",
-            minute: "2-digit"
-        });
+    time.textContent = now.toLocaleString("en-US", {
+        weekday: "short",
+        month: "short",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        timeZone: "UTC"
+    }) + " UTC";
 }
 
+setInterval(updateTime, 1000);
 updateTime();
 
-setInterval(updateTime, 1000);
+// Fade-in animation
+window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+});
 
-document.querySelectorAll(".fill").forEach(bar => {
-    const width = bar.style.width;
+// Status pulse animation
+document.querySelectorAll(".status-dot").forEach(dot => {
+    setInterval(() => {
+        dot.animate(
+            [
+                { transform: "scale(1)" },
+                { transform: "scale(1.35)" },
+                { transform: "scale(1)" }
+            ],
+            {
+                duration: 1800,
+                easing: "ease-in-out"
+            }
+        );
+    }, 2000);
+});
 
-    bar.style.width = "0%";
+// Mouse glow effect
+const glow = document.createElement("div");
+glow.className = "cursor-glow";
+document.body.appendChild(glow);
 
-    setTimeout(() => {
-        bar.style.width = width;
-    }, 300);
+document.addEventListener("mousemove", e => {
+    glow.style.left = `${e.clientX}px`;
+    glow.style.top = `${e.clientY}px`;
+});
+
+// Card hover effect
+document.querySelectorAll(".card").forEach(card => {
+    card.addEventListener("mousemove", e => {
+        const rect = card.getBoundingClientRect();
+
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        card.style.setProperty("--x", `${x}px`);
+        card.style.setProperty("--y", `${y}px`);
+    });
 });
