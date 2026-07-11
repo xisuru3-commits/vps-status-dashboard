@@ -1,147 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infrastructure Status</title>
 
-<title>System Status</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="background"></div>
+<div class="background-blur blur1"></div>
+<div class="background-blur blur2"></div>
 
-<div class="container">
+<header class="hero">
 
-<header>
+    <div class="hero-top">
+        <div class="status">
+            <span class="status-dot"></span>
+            <span>All Systems Operational</span>
+        </div>
 
-<h1>System Status</h1>
+        <div id="current-time"></div>
+    </div>
 
-<p>All services are operating normally.</p>
+    <h1>Infrastructure Status</h1>
+
+    <p>
+        Real-time monitoring for servers, network,
+        uptime and system health.
+    </p>
 
 </header>
 
-<section class="status-card">
+<main>
 
-<div class="status-header">
+<section class="grid">
 
-<div>
-
-<h2>Infrastructure</h2>
-
-<span class="online">
-🟢 Operational
-</span>
-
+<div class="card">
+    <h3>🇸🇬 Singapore VPS</h3>
+    <p class="online">Operational</p>
 </div>
 
-<div class="time">
-
-Updated just now
-
+<div class="card">
+    <h3>🇯🇵 Tokyo VPS</h3>
+    <p class="online">Operational</p>
 </div>
 
+<div class="card">
+    <h3>API Services</h3>
+    <p class="online">Operational</p>
 </div>
 
-<div class="metric">
-
-<div class="label">
-
-CPU Usage
-
-<span>42%</span>
-
+<div class="card">
+    <h3>Website</h3>
+    <p class="online">Operational</p>
 </div>
 
-<div class="bar">
+</section>
 
-<div class="fill cpu"></div>
+<section class="card uptime">
 
+<h2>90-Day Uptime</h2>
+
+<div class="uptime-value">
+99.98%
 </div>
 
-</div>
+<div class="graph">
 
-<div class="metric">
-
-<div class="label">
-
-Memory
-
-<span>61%</span>
-
-</div>
-
-<div class="bar">
-
-<div class="fill ram"></div>
-
-</div>
-
-</div>
-
-<div class="metric">
-
-<div class="label">
-
-Disk Usage
-
-<span>28%</span>
-
-</div>
-
-<div class="bar">
-
-<div class="fill disk"></div>
-
-</div>
-
-</div>
-
-<div class="grid">
-
-<div class="box">
-
-<h3>Uptime</h3>
-
-<p>15 Days</p>
-
-</div>
-
-<div class="box">
-
-<h3>Latency</h3>
-
-<p>11 ms</p>
-
-</div>
-
-<div class="box">
-
-<h3>Region</h3>
-
-<p>Singapore</p>
-
-</div>
-
-<div class="box">
-
-<h3>Connections</h3>
-
-<p>27</p>
-
-</div>
+<div></div><div></div><div></div><div></div>
+<div></div><div></div><div></div><div></div>
+<div></div><div></div><div></div><div></div>
+<div></div><div></div><div></div><div></div>
+<div></div><div></div><div></div><div></div>
 
 </div>
 
 </section>
 
+<section class="card">
+
+<h2>Recent Activity</h2>
+
+<div class="incident">
+✔ No incidents reported.
 </div>
+
+</section>
+
+</main>
 
 <script src="script.js"></script>
 
