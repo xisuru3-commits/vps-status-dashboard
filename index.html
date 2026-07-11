@@ -1,179 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Infrastructure Status</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
 <body>
 
 <div class="background-glow"></div>
 
 <header class="topbar">
 
-    <div class="live-status">
-        <span class="live-dot"></span>
-        <span id="last-update">Just now</span>
-    </div>
+<div class="brand">
 
-    <button class="refresh-btn" id="refreshBtn">
-        ⟳
-    </button>
+<div class="brand-dot"></div>
+
+<div>
+
+<h2>Infrastructure</h2>
+<p>Live Server Monitor</p>
+
+</div>
+
+</div>
+
+<div class="status-pill">
+
+<span class="status-dot"></span>
+
+Server Online
+
+</div>
 
 </header>
 
 <main class="container">
 
-    <section class="hero-card">
+<section class="hero">
 
-        <div class="hero-glow">
-            <div class="status-circle"></div>
-        </div>
+<div class="hero-left">
 
-        <div class="hero-content">
+<h1>
 
-            <h1>
-                Server <span>Online</span>
-            </h1>
+Server
+<span>Online</span>
 
-            <div class="hero-tags">
+</h1>
 
-                <div class="tag">
-                    🐧 Ubuntu 24.04 LTS
-                </div>
+<p>
 
-                <div class="tag">
-                    🇸🇬 Singapore VPS
-                </div>
+Ubuntu 24.04 LTS
 
-            </div>
+<br>
 
-        </div>
+Singapore VPS
 
-    </section>
+</p>
 
-    <section class="cards">
+</div>
 
-        <div class="card">
+<div class="hero-right">
 
-            <h2>
-                ⚡ System Resources
-            </h2>
+<div class="hero-circle">
 
-            <div class="metric">
+<div class="hero-core"></div>
 
-                <div class="metric-top">
-                    <span>CPU</span>
-                    <strong id="cpuPercent">42%</strong>
-                </div>
+</div>
 
-                <div class="progress">
-                    <div id="cpuBar" class="fill cpu"></div>
-                </div>
+</div>
 
-            </div>
+</section>
 
-            <div class="metric">
+<section class="grid">
 
-                <div class="metric-top">
-                    <span>RAM</span>
-                    <strong id="ramPercent">31%</strong>
-                </div>
+<div class="card">
 
-                <div class="progress">
-                    <div id="ramBar" class="fill ram"></div>
-                </div>
+<h2>System Resources</h2>
 
-            </div>
+<div class="metric">
 
-            <div class="metric">
+<div class="metric-head">
 
-                <div class="metric-top">
-                    <span>Swap</span>
-                    <strong id="swapPercent">0%</strong>
-                </div>
+<span>CPU</span>
 
-                <div class="progress">
-                    <div id="swapBar" class="fill swap"></div>
-                </div>
+<strong id="cpuText">42%</strong>
 
-            </div>
+</div>
 
-            <div class="metric">
+<div class="bar">
 
-                <div class="metric-top">
-                    <span>Storage</span>
-                    <strong id="diskPercent">44%</strong>
-                </div>
+<div class="fill cpu"></div>
 
-                <div class="progress">
-                    <div id="diskBar" class="fill disk"></div>
-                </div>
+</div>
 
-            </div>
+</div>
 
-        </div>
+<div class="metric">
 
-        <div class="card">
+<div class="metric-head">
 
-            <h2>
-                📊 3X-UI Traffic
-            </h2>
+<span>RAM</span>
 
-            <div class="traffic-item">
+<strong id="ramText">31%</strong>
 
-                <div>
-                    <h3>Upload</h3>
-                    <small>Total Uploaded</small>
-                </div>
+</div>
 
-                <strong id="uploadValue">
-                    0 B
-                </strong>
+<div class="bar">
 
-            </div>
+<div class="fill ram"></div>
 
-            <div class="traffic-item">
+</div>
 
-                <div>
-                    <h3>Download</h3>
-                    <small>Total Downloaded</small>
-                </div>
+</div>
 
-                <strong id="downloadValue">
-                    0 B
-                </strong>
+<div class="metric">
 
-            </div>
+<div class="metric-head">
 
-            <div class="traffic-item">
+<span>Swap</span>
 
-                <div>
-                    <h3>Total Usage</h3>
-                    <small>Upload + Download</small>
-                </div>
+<strong id="swapText">0%</strong>
 
-                <strong id="totalValue">
-                    0 B
-                </strong>
+</div>
 
-            </div>
+<div class="bar">
 
-        </div>
+<div class="fill swap"></div>
 
-    </section>
+</div>
 
-    <section class="footer-card">
+</div>
 
-        <div>
+<div class="metric">
 
-            <h3>
-                Last Updated
-            </h3>
+<div class="metric-head">
 
-            <p id="updatedTime">
-                Just now
-            </p>
+<span>Storage</span>
 
-        </div>
+<strong id="diskText">44%</strong>
 
-    </section>
+</div>
+
+<div class="bar">
+
+<div class="fill disk"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>3X-UI Traffic</h2>
+
+<div class="traffic">
+
+<div>
+
+<h3>Upload</h3>
+
+<p>Total Uploaded</p>
+
+</div>
+
+<strong id="upload">
+
+0 B
+
+</strong>
+
+</div>
+
+<div class="traffic">
+
+<div>
+
+<h3>Download</h3>
+
+<p>Total Downloaded</p>
+
+</div>
+
+<strong id="download">
+
+0 B
+
+</strong>
+
+</div>
+
+<div class="traffic">
+
+<div>
+
+<h3>Total Usage</h3>
+
+<p>Upload + Download</p>
+
+</div>
+
+<strong id="total">
+
+0 B
+
+</strong>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="footer-card">
+
+<div>
+
+<h3>Last Updated</h3>
+
+<p id="updated">
+
+Just now
+
+</p>
+
+</div>
+
+<button id="refresh">
+
+Refresh
+
+</button>
+
+</section>
 
 </main>
 
 <script src="script.js"></script>
 
 </body>
+
+</html>
