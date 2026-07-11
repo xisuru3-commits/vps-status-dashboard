@@ -1,303 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Infrastructure Status</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<div class="aurora aurora1"></div>
-<div class="aurora aurora2"></div>
-<div class="noise"></div>
-
-<header>
-
-<nav class="navbar">
-
-<div class="logo">
-<div class="logo-icon">●</div>
-<span>Infrastructure Status</span>
-</div>
-
-<ul>
-
-<li><a href="#">Status</a></li>
-<li><a href="#">Incidents</a></li>
-<li><a href="#">Maintenance</a></li>
-
-</ul>
-
-<button class="btn">Subscribe</button>
-
-</nav>
-
-<section class="hero">
-
-<div class="hero-top">
-
-<div class="badge">
-<span class="status-dot"></span>
-All Systems Operational
-</div>
-
-<div id="current-time"></div>
-
-</div>
-
-<div class="hero-icon">
-🖥️
-</div>
-
-<h1>
-Infrastructure Status
-</h1>
-
-<p>
-Real-time monitoring for servers, uptime, latency and infrastructure health.
-</p>
-
-</section>
-
-</header>
-
 <main>
 
-<section class="cards">
+<section class="dashboard">
 
-<div class="card">
+    <div class="panel">
 
-<div class="card-head">
+        <div class="panel-header">
+            <h2>🟢 Server Online</h2>
+            <span id="last-updated">Just now</span>
+        </div>
 
-<div class="icon">🖥️</div>
+        <p class="server-info">
+            Ubuntu 24.04 • Singapore VPS
+        </p>
 
-<div>
+        <div class="metric">
+            <div class="metric-title">
+                <span>CPU</span>
+                <span id="cpu-value">42%</span>
+            </div>
+            <div class="progress">
+                <div id="cpu-bar" class="fill" style="width:42%"></div>
+            </div>
+        </div>
 
-<h3>Singapore VPS</h3>
+        <div class="metric">
+            <div class="metric-title">
+                <span>RAM</span>
+                <span id="ram-value">31%</span>
+            </div>
+            <div class="progress">
+                <div id="ram-bar" class="fill" style="width:31%"></div>
+            </div>
+        </div>
 
-<small>sg.example.com</small>
+        <div class="metric">
+            <div class="metric-title">
+                <span>Swap</span>
+                <span id="swap-value">0%</span>
+            </div>
+            <div class="progress">
+                <div id="swap-bar" class="fill" style="width:0%"></div>
+            </div>
+        </div>
 
-</div>
+        <div class="metric">
+            <div class="metric-title">
+                <span>Storage</span>
+                <span id="disk-value">44%</span>
+            </div>
+            <div class="progress">
+                <div id="disk-bar" class="fill" style="width:44%"></div>
+            </div>
+        </div>
 
-</div>
+    </div>
 
-<div class="online">
-<span class="status-dot"></span>
-Operational
-</div>
+    <div class="panel">
 
-<div class="sparkline"></div>
+        <h2>3X-UI Traffic</h2>
 
-<div class="latency">
+        <div class="traffic">
+            <span>⬆ Upload</span>
+            <strong id="upload">0 B</strong>
+        </div>
 
-<span>Latency</span>
+        <div class="traffic">
+            <span>⬇ Download</span>
+            <strong id="download">0 B</strong>
+        </div>
 
-<strong>18 ms</strong>
+        <div class="traffic total">
+            <span>📊 Total Usage</span>
+            <strong id="total">0 B</strong>
+        </div>
 
-</div>
-
-</div>
-
-<div class="card">
-
-<div class="card-head">
-
-<div class="icon">🗼</div>
-
-<div>
-
-<h3>Tokyo VPS</h3>
-
-<small>jp.example.com</small>
-
-</div>
-
-</div>
-
-<div class="online">
-<span class="status-dot"></span>
-Operational
-</div>
-
-<div class="sparkline purple"></div>
-
-<div class="latency">
-
-<span>Latency</span>
-
-<strong>24 ms</strong>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<div class="card-head">
-
-<div class="icon">☁️</div>
-
-<div>
-
-<h3>API Services</h3>
-
-<small>api.example.com</small>
-
-</div>
-
-</div>
-
-<div class="online">
-<span class="status-dot"></span>
-Operational
-</div>
-
-<div class="sparkline cyan"></div>
-
-<div class="latency">
-
-<span>Latency</span>
-
-<strong>16 ms</strong>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<div class="card-head">
-
-<div class="icon">🌐</div>
-
-<div>
-
-<h3>Website</h3>
-
-<small>example.com</small>
-
-</div>
-
-</div>
-
-<div class="online">
-<span class="status-dot"></span>
-Operational
-</div>
-
-<div class="sparkline violet"></div>
-
-<div class="latency">
-
-<span>Latency</span>
-
-<strong>21 ms</strong>
-
-</div>
-
-</div>
+    </div>
 
 </section>
-
-<section class="bottom-grid">
-
-<div class="panel">
-
-<div class="panel-header">
-
-<h2>90-Day Uptime</h2>
-
-<select>
-
-<option>Last 90 days</option>
-
-</select>
-
-</div>
-
-<div class="uptime-number">
-
-99.98%
-
-</div>
-
-<p>Overall uptime</p>
-
-<div class="bars">
-
-<div></div><div></div><div></div><div></div><div></div>
-<div></div><div></div><div></div><div></div><div></div>
-<div></div><div></div><div></div><div></div><div></div>
-<div></div><div></div><div></div><div></div><div></div>
-<div></div><div></div><div></div><div></div><div></div>
-<div></div><div></div><div></div><div></div><div></div>
-
-</div>
-
-</div>
-
-<div class="panel">
-
-<div class="panel-header">
-
-<h2>Recent Activity</h2>
-
-<button class="ghost">View all</button>
-
-</div>
-
-<div class="activity">
-
-<div class="check">
-
-✔
-
-</div>
-
-<h3>No incidents reported.</h3>
-
-<p>
-
-Everything is running smoothly.
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<footer>
-
-<div>
-
-We continuously monitor infrastructure 24/7.
-
-</div>
-
-<button class="btn">
-
-Subscribe to updates
-
-</button>
-
-</footer>
 
 </main>
-
-<script src="script.js"></script>
-
-</body>
-
-</html>
