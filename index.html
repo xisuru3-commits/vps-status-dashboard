@@ -1,81 +1,179 @@
-<main>
+<body>
 
-<section class="dashboard">
+<div class="background-glow"></div>
 
-    <div class="panel">
+<header class="topbar">
 
-        <div class="panel-header">
-            <h2>🟢 Server Online</h2>
-            <span id="last-updated">Just now</span>
-        </div>
-
-        <p class="server-info">
-            Ubuntu 24.04 • Singapore VPS
-        </p>
-
-        <div class="metric">
-            <div class="metric-title">
-                <span>CPU</span>
-                <span id="cpu-value">42%</span>
-            </div>
-            <div class="progress">
-                <div id="cpu-bar" class="fill" style="width:42%"></div>
-            </div>
-        </div>
-
-        <div class="metric">
-            <div class="metric-title">
-                <span>RAM</span>
-                <span id="ram-value">31%</span>
-            </div>
-            <div class="progress">
-                <div id="ram-bar" class="fill" style="width:31%"></div>
-            </div>
-        </div>
-
-        <div class="metric">
-            <div class="metric-title">
-                <span>Swap</span>
-                <span id="swap-value">0%</span>
-            </div>
-            <div class="progress">
-                <div id="swap-bar" class="fill" style="width:0%"></div>
-            </div>
-        </div>
-
-        <div class="metric">
-            <div class="metric-title">
-                <span>Storage</span>
-                <span id="disk-value">44%</span>
-            </div>
-            <div class="progress">
-                <div id="disk-bar" class="fill" style="width:44%"></div>
-            </div>
-        </div>
-
+    <div class="live-status">
+        <span class="live-dot"></span>
+        <span id="last-update">Just now</span>
     </div>
 
-    <div class="panel">
+    <button class="refresh-btn" id="refreshBtn">
+        ⟳
+    </button>
 
-        <h2>3X-UI Traffic</h2>
+</header>
 
-        <div class="traffic">
-            <span>⬆ Upload</span>
-            <strong id="upload">0 B</strong>
+<main class="container">
+
+    <section class="hero-card">
+
+        <div class="hero-glow">
+            <div class="status-circle"></div>
         </div>
 
-        <div class="traffic">
-            <span>⬇ Download</span>
-            <strong id="download">0 B</strong>
+        <div class="hero-content">
+
+            <h1>
+                Server <span>Online</span>
+            </h1>
+
+            <div class="hero-tags">
+
+                <div class="tag">
+                    🐧 Ubuntu 24.04 LTS
+                </div>
+
+                <div class="tag">
+                    🇸🇬 Singapore VPS
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="traffic total">
-            <span>📊 Total Usage</span>
-            <strong id="total">0 B</strong>
+    </section>
+
+    <section class="cards">
+
+        <div class="card">
+
+            <h2>
+                ⚡ System Resources
+            </h2>
+
+            <div class="metric">
+
+                <div class="metric-top">
+                    <span>CPU</span>
+                    <strong id="cpuPercent">42%</strong>
+                </div>
+
+                <div class="progress">
+                    <div id="cpuBar" class="fill cpu"></div>
+                </div>
+
+            </div>
+
+            <div class="metric">
+
+                <div class="metric-top">
+                    <span>RAM</span>
+                    <strong id="ramPercent">31%</strong>
+                </div>
+
+                <div class="progress">
+                    <div id="ramBar" class="fill ram"></div>
+                </div>
+
+            </div>
+
+            <div class="metric">
+
+                <div class="metric-top">
+                    <span>Swap</span>
+                    <strong id="swapPercent">0%</strong>
+                </div>
+
+                <div class="progress">
+                    <div id="swapBar" class="fill swap"></div>
+                </div>
+
+            </div>
+
+            <div class="metric">
+
+                <div class="metric-top">
+                    <span>Storage</span>
+                    <strong id="diskPercent">44%</strong>
+                </div>
+
+                <div class="progress">
+                    <div id="diskBar" class="fill disk"></div>
+                </div>
+
+            </div>
+
         </div>
 
-    </div>
+        <div class="card">
 
-</section>
+            <h2>
+                📊 3X-UI Traffic
+            </h2>
+
+            <div class="traffic-item">
+
+                <div>
+                    <h3>Upload</h3>
+                    <small>Total Uploaded</small>
+                </div>
+
+                <strong id="uploadValue">
+                    0 B
+                </strong>
+
+            </div>
+
+            <div class="traffic-item">
+
+                <div>
+                    <h3>Download</h3>
+                    <small>Total Downloaded</small>
+                </div>
+
+                <strong id="downloadValue">
+                    0 B
+                </strong>
+
+            </div>
+
+            <div class="traffic-item">
+
+                <div>
+                    <h3>Total Usage</h3>
+                    <small>Upload + Download</small>
+                </div>
+
+                <strong id="totalValue">
+                    0 B
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="footer-card">
+
+        <div>
+
+            <h3>
+                Last Updated
+            </h3>
+
+            <p id="updatedTime">
+                Just now
+            </p>
+
+        </div>
+
+    </section>
 
 </main>
+
+<script src="script.js"></script>
+
+</body>
