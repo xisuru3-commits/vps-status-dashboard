@@ -15,16 +15,15 @@ async function loadStatus() {
         const res = await fetch("https://vps-status-api.xisuru3.workers.dev/");
         const data = await res.json();
 
-        cpu.textContent = data.server.cpu + "%";
-        ram.textContent = data.server.ram + "%";
-        swap.textContent = data.server.swap + "%";
-        disk.textContent = data.server.disk + "%";
+        cpu.textContent = data.server.cpu.toFixed(1) + "%";
+ram.textContent = data.server.ramPercent + "%";
+swap.textContent = data.server.swapPercent + "%";
+disk.textContent = data.server.storagePercent + "%";
 
-        document.querySelector(".cpu").style.width = data.server.cpu + "%";
-        document.querySelector(".ram").style.width = data.server.ram + "%";
-        document.querySelector(".swap").style.width = data.server.swap + "%";
-        document.querySelector(".disk").style.width = data.server.disk + "%";
-
+document.querySelector(".cpu").style.width = data.server.cpu + "%";
+document.querySelector(".ram").style.width = data.server.ramPercent + "%";
+document.querySelector(".swap").style.width = data.server.swapPercent + "%";
+document.querySelector(".disk").style.width = data.server.storagePercent + "%";
         upload.textContent = data.panel.upload || "0 B";
         download.textContent = data.panel.download || "0 B";
         total.textContent = data.panel.totalUsage || "0 B";
