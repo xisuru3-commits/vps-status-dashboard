@@ -1,96 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infrastructure Status</title>
 
-    <link rel="stylesheet" href="style.css">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Infrastructure Status</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="background-blur blur1"></div>
-<div class="background-blur blur2"></div>
+<div class="aurora aurora1"></div>
+<div class="aurora aurora2"></div>
+<div class="noise"></div>
 
-<header class="hero">
+<header>
 
-    <div class="hero-top">
-        <div class="status">
-            <span class="status-dot"></span>
-            <span>All Systems Operational</span>
-        </div>
+<nav class="navbar">
 
-        <div id="current-time"></div>
-    </div>
+<div class="logo">
+<div class="logo-icon">●</div>
+<span>Infrastructure Status</span>
+</div>
 
-    <h1>Infrastructure Status</h1>
+<ul>
 
-    <p>
-        Real-time monitoring for servers, network,
-        uptime and system health.
-    </p>
+<li><a href="#">Status</a></li>
+<li><a href="#">Incidents</a></li>
+<li><a href="#">Maintenance</a></li>
+
+</ul>
+
+<button class="btn">Subscribe</button>
+
+</nav>
+
+<section class="hero">
+
+<div class="hero-top">
+
+<div class="badge">
+<span class="status-dot"></span>
+All Systems Operational
+</div>
+
+<div id="current-time"></div>
+
+</div>
+
+<div class="hero-icon">
+🖥️
+</div>
+
+<h1>
+Infrastructure Status
+</h1>
+
+<p>
+Real-time monitoring for servers, uptime, latency and infrastructure health.
+</p>
+
+</section>
 
 </header>
 
 <main>
 
-<section class="grid">
+<section class="cards">
 
 <div class="card">
-    <h3>🇸🇬 Singapore VPS</h3>
-    <p class="online">Operational</p>
+
+<div class="card-head">
+
+<div class="icon">🖥️</div>
+
+<div>
+
+<h3>Singapore VPS</h3>
+
+<small>sg.example.com</small>
+
+</div>
+
+</div>
+
+<div class="online">
+<span class="status-dot"></span>
+Operational
+</div>
+
+<div class="sparkline"></div>
+
+<div class="latency">
+
+<span>Latency</span>
+
+<strong>18 ms</strong>
+
+</div>
+
 </div>
 
 <div class="card">
-    <h3>🇯🇵 Tokyo VPS</h3>
-    <p class="online">Operational</p>
+
+<div class="card-head">
+
+<div class="icon">🗼</div>
+
+<div>
+
+<h3>Tokyo VPS</h3>
+
+<small>jp.example.com</small>
+
+</div>
+
+</div>
+
+<div class="online">
+<span class="status-dot"></span>
+Operational
+</div>
+
+<div class="sparkline purple"></div>
+
+<div class="latency">
+
+<span>Latency</span>
+
+<strong>24 ms</strong>
+
+</div>
+
 </div>
 
 <div class="card">
-    <h3>API Services</h3>
-    <p class="online">Operational</p>
+
+<div class="card-head">
+
+<div class="icon">☁️</div>
+
+<div>
+
+<h3>API Services</h3>
+
+<small>api.example.com</small>
+
+</div>
+
+</div>
+
+<div class="online">
+<span class="status-dot"></span>
+Operational
+</div>
+
+<div class="sparkline cyan"></div>
+
+<div class="latency">
+
+<span>Latency</span>
+
+<strong>16 ms</strong>
+
+</div>
+
 </div>
 
 <div class="card">
-    <h3>Website</h3>
-    <p class="online">Operational</p>
+
+<div class="card-head">
+
+<div class="icon">🌐</div>
+
+<div>
+
+<h3>Website</h3>
+
+<small>example.com</small>
+
+</div>
+
+</div>
+
+<div class="online">
+<span class="status-dot"></span>
+Operational
+</div>
+
+<div class="sparkline violet"></div>
+
+<div class="latency">
+
+<span>Latency</span>
+
+<strong>21 ms</strong>
+
+</div>
+
 </div>
 
 </section>
 
-<section class="card uptime">
+<section class="bottom-grid">
+
+<div class="panel">
+
+<div class="panel-header">
 
 <h2>90-Day Uptime</h2>
 
-<div class="uptime-value">
+<select>
+
+<option>Last 90 days</option>
+
+</select>
+
+</div>
+
+<div class="uptime-number">
+
 99.98%
-</div>
-
-<div class="graph">
-
-<div></div><div></div><div></div><div></div>
-<div></div><div></div><div></div><div></div>
-<div></div><div></div><div></div><div></div>
-<div></div><div></div><div></div><div></div>
-<div></div><div></div><div></div><div></div>
 
 </div>
 
-</section>
+<p>Overall uptime</p>
 
-<section class="card">
+<div class="bars">
+
+<div></div><div></div><div></div><div></div><div></div>
+<div></div><div></div><div></div><div></div><div></div>
+<div></div><div></div><div></div><div></div><div></div>
+<div></div><div></div><div></div><div></div><div></div>
+<div></div><div></div><div></div><div></div><div></div>
+<div></div><div></div><div></div><div></div><div></div>
+
+</div>
+
+</div>
+
+<div class="panel">
+
+<div class="panel-header">
 
 <h2>Recent Activity</h2>
 
-<div class="incident">
-✔ No incidents reported.
+<button class="ghost">View all</button>
+
+</div>
+
+<div class="activity">
+
+<div class="check">
+
+✔
+
+</div>
+
+<h3>No incidents reported.</h3>
+
+<p>
+
+Everything is running smoothly.
+
+</p>
+
+</div>
+
 </div>
 
 </section>
+
+<footer>
+
+<div>
+
+We continuously monitor infrastructure 24/7.
+
+</div>
+
+<button class="btn">
+
+Subscribe to updates
+
+</button>
+
+</footer>
 
 </main>
 
 <script src="script.js"></script>
 
 </body>
+
 </html>
