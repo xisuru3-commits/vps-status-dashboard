@@ -1,86 +1,42 @@
-// Infrastructure Status Dashboard
+const refreshBtn = document.getElementById("refresh");
+const lastUpdated = document.getElementById("updated");
 
-// ---------- Fade In ----------
-window.addEventListener("load", () => {
-    document.body.style.opacity = "1";
-});
+const cpu = document.getElementById("cpuText");
+const ram = document.getElementById("ramText");
+const swap = document.getElementById("swapText");
+const disk = document.getElementById("diskText");
 
-// ---------- UTC Clock ----------
-function updateClock() {
-    const clock = document.getElementById("current-time");
-    if (!clock) return;
+const upload = document.getElementById("upload");
+const download = document.getElementById("download");
+const total = document.getElementById("total");
 
-    const now = new Date();
+async function loadStatus() {
+    try {
+        const res = await fetch("https://vps-status-api.xisuru3.workers.dev/");
+        const data = await res.json();
 
-    clock.textContent = now.toLocaleString("en-US", {
-        weekday: "short",
-        month: "short",
-        day: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        timeZone: "UTC"
-    }) + " UTC";
+        cpu.textContent = data.server.cpu + "%";
+        ram.textContent = data.server.ram + "%";
+        swap.textContent = data.server.swap + "%";
+        disk.textContent = data.server.disk + "%";
+
+        document.querySelector(".cpu").style.width = data.server.cpu + "%";
+        document.querySelector(".ram").style.width = data.server.ram + "%";
+        document.querySelector(".swap").style.width = data.server.swap + "%";
+        document.querySelector(".disk").style.width = data.server.disk + "%";
+
+        upload.textContent = data.panel.upload || "0 B";
+        download.textContent = data.panel.download || "0 B";
+        total.textContent = data.panel.totalUsage || "0 B";
+
+        lastUpdated.textContent = new Date().toLocaleTimeString();
+    } catch (err) {
+        console.error(err);
+    }
 }
 
-updateClock();
-setInterval(updateClock, 1000);
+refreshBtn.addEventListener("click", loadStatus);
 
-// ---------- Card Light Effect ----------
-document.querySelectorAll(".card").forEach(card => {
+loadStatus();
 
-    card.addEventListener("mousemove", e => {
-
-        const rect = card.getBoundingClientRect();
-
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        card.style.setProperty("--x", x + "px");
-        card.style.setProperty("--y", y + "px");
-
-    });
-
-});
-
-// ---------- Status Pulse ----------
-setInterval(() => {
-
-    document.querySelectorAll(".status-dot").forEach(dot => {
-
-        dot.animate([
-            { transform: "scale(1)" },
-            { transform: "scale(1.4)" },
-            { transform: "scale(1)" }
-        ], {
-            duration: 1800,
-            easing: "ease-in-out"
-        });
-
-    });
-
-}, 2000);
-
-// ---------- Smooth Scroll ----------
-document.querySelectorAll("a").forEach(link => {
-
-    link.addEventListener("click", e => {
-
-        const href = link.getAttribute("href");
-
-        if (!href || href === "#") return;
-
-        if (href.startsWith("#")) {
-
-            e.preventDefault();
-
-            document.querySelector(href)
-                ?.scrollIntoView({
-                    behavior: "smooth"
-                });
-
-        }
-
-    });
-
-});
+setInterval(loadStatus, 5000);
