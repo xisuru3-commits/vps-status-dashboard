@@ -12,10 +12,28 @@ const total = document.getElementById("total");
 
 async function loadStatus() {
     try {
-        const res = await fetch("https://vps-status-api.xisuru3.workers.dev/");
-        const data = await res.json();
+       const res = await fetch("https://vps-status-api.xisuru3.workers.dev/");
+const data = await res.json();
 
-        cpu.textContent = data.server.cpu.toFixed(1) + "%";
+const lastUpdate = new Date(data.updated);
+const seconds = (Date.now() - lastUpdate.getTime()) / 1000;
+
+const statusPill = document.querySelector(".status-pill");
+const heroTitle = document.querySelector(".hero-content h1 span");
+
+if (seconds > 15) {
+    statusPill.innerHTML =
+        '<span class="status-dot" style="background:#ef4444;box-shadow:0 0 15px #ef4444;"></span> Server Offline';
+
+    heroTitle.textContent = "Offline";
+} else {
+    statusPill.innerHTML =
+        '<span class="status-dot"></span> Server Online';
+
+    heroTitle.textContent = "Online";
+}
+
+cpu.textContent = data.server.cpu.toFixed(1) + "%";
 ram.textContent = data.server.ramPercent + "%";
 swap.textContent = data.server.swapPercent + "%";
 disk.textContent = data.server.storagePercent + "%";
